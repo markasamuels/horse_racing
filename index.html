@@ -3,17 +3,32 @@
 <head>
 
 	<style type="text/css">
-
+		#chose-winner {
+			padding-top: 40px;
+		}
 		.horse {
 			margin-bottom: 20px;
 		}
 		.horse img{
 			max-height: 50px;
 		}
+		#reset, #chose-winner {
+			margin: 10px;
+		}
+		#reset {
+			  background-color: #4CAF50; /* Green */
+			  border: none;
+			  color: white;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+		}
 		#selected-horse, #winning-horse {
 			margin-top: 20px;
 			font-weight: bold;
-			font-size: 4em;
+			font-size: 2em;
 		}
 		#winning-horse {
 			color: green;
@@ -29,6 +44,7 @@
 
     <div id="finish-line" style="width: 1000px; height: 300px; border-right: 2px solid #333; ">
 
+	<div id="reset"><span id="new-game" onclick="newGame()">New Game</span></div>
 
 
 	<div id="racetrack">
@@ -44,7 +60,7 @@
 
     <div id="chose-winner">
 
-    	<label>Pick your Horse:</label> <br />
+    	<label><strong>Pick Your Horse:</strong></label> <br />
     	<input type="radio" name="myhorse" value="Horse 1" onclick="pickHorse(this.value)" />Horse 1 <br />
     	<input type="radio" name="myhorse" value="Horse 2" onclick="pickHorse(this.value)" />Horse 2 <br />
     	<input type="radio" name="myhorse" value="Horse 3" onclick="pickHorse(this.value)" />Horse 3 <br />
@@ -56,8 +72,6 @@
 
 	<div id="winning-horse"></div>
 
-
-	<div><span id="new-game" onclick="newGame()">New Game</span></div>
 
 <script type="text/javascript">
 
