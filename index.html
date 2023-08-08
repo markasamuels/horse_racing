@@ -1,222 +1,274 @@
-<html>
+<!doctype html>
+<html lang="en">
 
-<head>
+	<head>
 
-	<style type="text/css">
-		#chose-winner {
-			padding-top: 40px;
-		}
-		.horse {
-			margin-bottom: 20px;
-		}
-		.horse img{
-			max-height: 50px;
-		}
-		#reset, #chose-winner {
-			margin: 10px;
-		}
-		#reset {
-			  background-color: #4CAF50; /* Green */
-			  border: none;
-			  color: white;
-			  padding: 15px 32px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-		}
-		#selected-horse, #winning-horse {
-			margin-top: 20px;
-			font-weight: bold;
-			font-size: 2em;
-		}
-		#winning-horse {
-			color: green;
-		}
-		#selected-horse {
-			color: red;
-		}
-	</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Racing</title>
+	
+		<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 
-</head>
+		<style type="text/css">
+			#chose-winner {
+				padding-top: 40px;
+			}
+			.horse {
+				margin-bottom: 20px;
+			}
+			.horse img{
+				max-height: 50px;
+			}
+			#reset, #chose-winner {
+				margin: 10px;
+			}
+
+			#selected-horse, #winning-horse {
+				margin-top: 20px;
+				font-weight: bold;
+				font-size: 2em;
+			}
+			#winning-horse {
+				color: green;
+			}
+			#selected-horse {
+				color: red;
+			}
+		</style>
+
+	</head>
 
 <body>
 
-    <div id="finish-line" style="width: 1000px; height: 300px; border-right: 2px solid #333; ">
-
-	<div id="reset"><span id="new-game" onclick="newGame()">New Game</span></div>
+<div class="container">
 
 
-	<div id="racetrack">
+	<div class="row">
 
-		<div id="horse1" class="horse"><img src="horse.png"></div>
-		<div id="horse2" class="horse"><img src="horse.png"></div>
-		<div id="horse3" class="horse"><img src="horse.png"></div>
-		<div id="horse4" class="horse"><img src="horse.png"></div>
+		<div class="col-sm-12">
 
+			<div id="finish-line" style="width: 1000px; height: 300px; border-right: 2px solid #333; ">
+
+				<div id="reset"><span id="new-game"  class="btn btn-success" onclick="newGame()">New Game</span></div>
+
+
+				<div id="racetrack">
+
+					<div id="horse1" class="horse"><img src="horse.png"></div>
+					<div id="horse2" class="horse"><img src="horse.png"></div>
+					<div id="horse3" class="horse"><img src="horse.png"></div>
+					<div id="horse4" class="horse"><img src="horse.png"></div>
+
+
+				</div>
+
+			</div>
+		
+		</div>
+	
+	</div><!-- end -->
+
+	<div class="row">
+
+		<div class="col-sm-12">
+	
+			<div id="chose-winner">
+
+				<label><strong>Pick Your Horse:</strong></label> <br />
+
+				<div class="row">
+				
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" name="myhorse" value="Horse 1" onclick="pickHorse(this.value)" />Horse 1
+					</div>
+
+					<div class="col-sm-3">		
+						<button type="button" class="btn btn-primary" name="myhorse" value="Horse 2" onclick="pickHorse(this.value)" />Horse 2
+					</div>
+
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" name="myhorse" value="Horse 3" onclick="pickHorse(this.value)" />Horse 3
+					</div>
+
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-primary" name="myhorse" value="Horse 4" onclick="pickHorse(this.value)" />Horse 4
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
 
 	</div>
-    </div>
 
-    <div id="chose-winner">
+	<div class="row">
 
-    	<label><strong>Pick Your Horse:</strong></label> <br />
-    	<input type="radio" name="myhorse" value="Horse 1" onclick="pickHorse(this.value)" />Horse 1 <br />
-    	<input type="radio" name="myhorse" value="Horse 2" onclick="pickHorse(this.value)" />Horse 2 <br />
-    	<input type="radio" name="myhorse" value="Horse 3" onclick="pickHorse(this.value)" />Horse 3 <br />
-    	<input type="radio" name="myhorse" value="Horse 4" onclick="pickHorse(this.value)" />Horse 4
+		<div class="col-sm-6">
+		
+			<div id="selected-horse"></div>
 
-    </div>
+		</div>
+		
+		<div class="col-sm-6">
+			<div id="winning-horse"></div>
+		</div>
+		
+	</div>
 
-	<div id="selected-horse"></div>
 
-	<div id="winning-horse"></div>
-
+</div> <!-- end container -->
 
 <script type="text/javascript">
 
-const Game = {
-	horses: [],
-	horse_scores: [],
-	has_winner: false,
-    // TODO pass in an array of horses
-	startGame: function(){
+	const Game = {
+		horses: [],
+		horse_scores: [],
+		has_winner: false,
+		// TODO pass in an array of horses
+		startGame: function(){
+			let h1 = Object.create(Horse);
+			h1.name = "Horse 1";
+			let h2 = Object.create(Horse);
+			h2.name = "Horse 2";
+			let h3 = Object.create(Horse);
+			h3.name = "Horse 3";
+			let h4 = Object.create(Horse);
+			h4.name = "Horse 4";
 
-		let h1 = Object.create(Horse);
-		let h2 = Object.create(Horse);
-		let h3 = Object.create(Horse);
-		let h4 = Object.create(Horse);
+			// store all the horses in an array for use later
+			this.horses.push(h1);
+			this.horses.push(h2);
+			this.horses.push(h3);
+			this.horses.push(h4);
 
-		// store all the horses in an array for use later
-		this.horses.push(h1);
-		this.horses.push(h2);
-		this.horses.push(h3);
-		this.horses.push(h4);
+			// loop through, generating a number each time and seeing if any horse scored 10
+			// ie. has_winner = true
+			while (this.has_winner == false) {
 
-		// loop through, generating a number each time and seeing if any horse scored 10
-		// ie. has_winner = true
-		while (this.has_winner == false) {
+				// move the horses along track
+				h1.setPosition();
+				h2.setPosition();
+				h3.setPosition();
+				h4.setPosition();
 
-			// move the horses along track
-			h1.setPosition();
-			h2.setPosition();
-			h3.setPosition();
-			h4.setPosition();
+				this.horse_scores = [h1.points, h2.points, h3.points, h4.points];
+				this.has_winner = this.horse_scores.includes(10);
+			}
 
-			this.horse_scores = [h1.points, h2.points, h3.points, h4.points];
-			this.has_winner = this.horse_scores.includes(10);
-	    }
-
-	}
-};
-
-const Horse = {
-	scores: "",// store scores as string then split to make array
-	points: 0,
-	generateRandomNum: function() {
-		return Math.random();
-	},
-	setPosition: function(){
-		let num = this.generateRandomNum();
-
-		// if above .5 horse gets 1 point
-		if(num > .5) {
-			this.points += 1;
-
-			// store each score
-			this.scores += this.points + ",";
-		} else {
-			this.scores += 0 + "," ;
 		}
-	},
-	getScores: function() {
-		return this.scores.split(",");
+	};
+
+	const Horse = {
+		scores: "",// store scores as string then split to make array
+		points: 0,
+		name: "",
+		generateRandomNum: function() {
+			return Math.random();
+		},
+		setPosition: function(){
+			let num = this.generateRandomNum();
+
+			// if above .5 horse gets 1 point
+			if(num > .5) {
+				this.points += 1;
+
+				// store each score
+				this.scores += this.points + ",";
+			} else {
+				this.scores += 0 + "," ;
+			}
+		},
+		getScores: function() {
+			return this.scores.split(",");
+		}
+
+	};
+
+
+
+	let game1 = Object.create(Game);
+	game1.startGame();
+
+	// loop through scores array
+	let horse1 = game1.horses[0].getScores();
+	let horse2 = game1.horses[1].getScores();
+	let horse3 = game1.horses[2].getScores();
+	let horse4 = game1.horses[3].getScores();
+
+	let i=0;
+
+
+	function getI() {
+		return i++;
 	}
 
-};
+	function gallop(){
+
+		let count = getI();
+
+		showMovement('horse1', horse1, count);
+		showMovement('horse2', horse2, count);
+		showMovement('horse3', horse3, count);
+		showMovement('horse4', horse4, count);
+	}
 
 
-
-let game1 = Object.create(Game);
-game1.startGame();
-
-// loop through scores array
-let horse1 = game1.horses[0].getScores();
-let horse2 = game1.horses[1].getScores();
-let horse3 = game1.horses[2].getScores();
-let horse4 = game1.horses[3].getScores();
-
-let i=0;
+	function newGame() {
+		location.reload();
+	}
 
 
-function getI() {
-	return i++;
-}
+	/**
+	** Show the horse icon moving on page
+	** str_id - id of the element holding icon
+	** horse_scores_array - array containing scores each time random number generated for horse
+	** array_pos - the particular point in the array that holds the score
+	**/
+	function showMovement(str_id, horse_scores_array, array_pos){
+		if(array_pos < horse_scores_array.length){
 
-function gallop(){
+			let pos = horse_scores_array[array_pos];
+			console.log('position' + pos);
 
-	let count = getI();
+			if(pos > 0) {
+				document.getElementById(str_id).style.marginLeft = pos + "00px";
 
-	showMovement('horse1', horse1, count);
-	showMovement('horse2', horse2, count);
-	showMovement('horse3', horse3, count);
-    showMovement('horse4', horse4, count);
-}
+				// when we have a winner change text to green
+				if((pos + "00px") == "1000px"){
+					document.getElementById(str_id).style.color = "green";
+					document.getElementById(str_id).style.fontWeight = "bold";
+					document.getElementById('winning-horse').innerHTML = "Winner is: " + str_id;
+				}
+			}
+		}
+	}
 
+	/**
+	** Do the horse movement logic every 1 second
+	**/
+	function startRace(){
 
-function newGame() {
-	location.reload();
-}
+		setInterval(gallop, 1000);
 
-
-/**
-** Show the horse icon moving on page
-** str_id - id of the element holding icon
-** horse_scores_array - array containing scores each time random number generated for horse
-** array_pos - the particular point in the array that holds the score
-**/
-function showMovement(str_id, horse_scores_array, array_pos){
-	if(array_pos < horse_scores_array.length){
-
-    	let pos = horse_scores_array[array_pos];
-
-    	if(pos > 0) {
-    	    document.getElementById(str_id).style.marginLeft = pos + "00px";
-
-    	    // when we have a winner change text to green
-    	    if((pos + "00px") == "1000px"){
-    	    	document.getElementById(str_id).style.color = "green";
-    	    	document.getElementById(str_id).style.fontWeight = "bold";
-				document.getElementById('winning-horse').innerHTML = "Winner is: " + str_id;
-    	    }
-    	}
-    }
-}
-
-/**
-** Do the horse movement logic every 1 second
-**/
-function startRace(){
-
-	setInterval(gallop, 1000);
-
-}
+	}
 
 
-/**
-** Show the horse selection and start the game
-**/
-function pickHorse(chosen_horse) {
-	// chose horse
-	document.getElementById('selected-horse').innerHTML = "You chose: " + chosen_horse;
+	/**
+	** Show the horse selection and start the game
+	**/
+	function pickHorse(chosen_horse) {
+		// chose horse
+		document.getElementById('selected-horse').innerHTML = "You chose: " + chosen_horse;
 
-	// start game
-	startRace();
-}
+		// start game
+		startRace();
+	}
 
- 
+	 
 </script>
 
 </body>
 
-</html>*
+</html>
