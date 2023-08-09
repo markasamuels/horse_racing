@@ -115,7 +115,11 @@
 				if((pos + "00px") == "1000px"){
 					document.getElementById(str_id).style.color = "green";
 					document.getElementById(str_id).style.fontWeight = "bold";
-					document.getElementById('winning-horse').innerHTML = "Winner is: " + str_id;
+					
+					var winner = document.getElementById('winning-horse');
+					winner.innerHTML = "Winner is: " + str_id;
+					winner.classList.add('alert');
+					winner.classList.add('alert-success');
 				}
 			}
 		}
@@ -136,7 +140,10 @@
 	**/
 	function pickHorse(chosen_horse) {
 		// chose horse
-		document.getElementById('selected-horse').innerHTML = "You chose: " + chosen_horse;
+		var elem = document.getElementById('selected-horse');
+		elem.innerHTML = "You chose: " + chosen_horse;
+		elem.classList.add('alert');
+		elem.classList.add('alert-danger');
 
 		// start game
 		startRace();
