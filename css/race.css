@@ -1,15 +1,11 @@
-			#chose-winner {
-				padding-top: 40px;
-			}
+
 			.horse {
 				margin-bottom: 20px;
 			}
 			.horse img{
 				max-height: 50px;
 			}
-			#reset, #chose-winner {
-				margin: 10px;
-			}
+			
 
 			#selected-horse, #winning-horse {
 				margin-top: 20px;
