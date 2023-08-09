@@ -17,17 +17,28 @@
 
 <body>
 
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">&nbsp;&nbsp;Horse Racing</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <span id="new-game"  class="btn btn-success" onclick="newGame()">New Game</span>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
 
 	<div class="row">
 
 		<div class="col-sm-12">
 
 			<div id="finish-line" style="width: 1000px; height: 300px; border-right: 2px solid #333; ">
-
-				<div id="reset"><span id="new-game"  class="btn btn-success" onclick="newGame()">New Game</span></div>
-
 
 				<div id="racetrack">
 
@@ -44,14 +55,14 @@
 		</div>
 	
 	</div><!-- end -->
-
+<hr />
 	<div class="row">
 
 		<div class="col-sm-12">
 	
 			<div id="chose-winner">
 
-				<label><strong>Pick Your Horse:</strong></label> <br />
+				<label><h3>Pick Your Horse:</h3></label> <br />
 
 				<div class="row">
 				
