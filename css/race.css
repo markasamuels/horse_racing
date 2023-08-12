@@ -18,5 +18,14 @@
 				color: green;
 			}
 			#selected-horse {
-				color: red;
+				color: red;				
+				border: 2px dotted red;
+				border-radius: 10px/15px;
+				height: 70px;
+				background: white;
+			}
+			#winning-horse {
+				border: 2px dotted green;
+				border-radius: 10px/15px;
+				height: 70px;
 			}
