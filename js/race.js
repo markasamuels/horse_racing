@@ -106,7 +106,7 @@
 		if(array_pos < horse_scores_array.length){
 
 			let pos = horse_scores_array[array_pos];
-			console.log('position' + pos);
+			//console.log('position: ' + pos);
 
 			if(pos > 0) {
 				document.getElementById(str_id).style.marginLeft = pos + "00px";
@@ -139,11 +139,16 @@
 	** Show the horse selection and start the game
 	**/
 	function pickHorse(chosen_horse) {
+		//console.log('horse is: ' + chosen_horse);
 		// chose horse
 		var elem = document.getElementById('selected-horse');
-		elem.innerHTML = "You chose: " + chosen_horse;
+		elem.innerHTML = "You chose: " + chosen_horse.value;
 		elem.classList.add('alert');
 		elem.classList.add('alert-danger');
+		
+		var selected_btn = document.getElementById(chosen_horse.id);
+		selected_btn.classList.remove('btn-primary');
+		selected_btn.classList.add('btn-warning');
 
 		// start game
 		startRace();
