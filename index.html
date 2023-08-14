@@ -31,17 +31,23 @@
     </ul>
 	<ul class="navbar-nav ms-auto">
       <li class="nav-item">
-        <span id="new-game"  class="btn btn-success" onclick="newGame()">New Game</span>&nbsp;&nbsp;
+        Articles&nbsp;&nbsp;
       </li>
 	</ul>
   </div>
 </nav>
 
-<div class="container" style="background-color:white; border-radius: 5px">
+<div class="container">
 
-	<div class="row">
+	<div class="row mb-2">
+		<div class="col-sm-9">
+		</div>
+		<div class="col-sm-3">
+			<span id="new-game" class="btn btn-success" onclick="newGame()">New Game</span>&nbsp;&nbsp;
+		</div>
+	</div>
 
-
+	<div class="row" style="background-color:white; border-radius: 5px">
 
 			<div id="racetrack" class="col-sm-9">
 
@@ -59,7 +65,7 @@
 			<div class="col-sm-1">
 				<span></span>
 			</div>
-			<div class="col-sm-1" style="border-left: 2px solid #333; ">
+			<div class="col-sm-1" style="border-left: 2px dotted #333; ">
 				<span></span>
 			</div>
 
@@ -77,23 +83,23 @@
 				</div>
 
 				<div class="row">
-				
-					<div class="col-sm-3">
-						<button type="button" class="btn btn-primary" id="myhorse1" value="Horse 1" onclick="pickHorse(this)" />Horse 1
-					</div>
+					<div class="col-sm-12">
+					
+						<button type="button" class="btn btn-primary" id="myhorse1" value="Horse 1" onclick="pickHorse(this)" />Horse 1</button>
+					
 
-					<div class="col-sm-3">		
-						<button type="button" class="btn btn-primary" id="myhorse2" value="Horse 2" onclick="pickHorse(this)" />Horse 2
-					</div>
+					
+						<button type="button" class="btn btn-primary" id="myhorse2" value="Horse 2" onclick="pickHorse(this)" />Horse 2</button>
+					
 
-					<div class="col-sm-3">
-						<button type="button" class="btn btn-primary" id="myhorse3" value="Horse 3" onclick="pickHorse(this)" />Horse 3
-					</div>
+					
+						<button type="button" class="btn btn-primary" id="myhorse3" value="Horse 3" onclick="pickHorse(this)" />Horse 3</button>
+					
 
-					<div class="col-sm-3">
-						<button type="button" class="btn btn-primary" id="myhorse4" value="Horse 4" onclick="pickHorse(this)" />Horse 4
+					
+						<button type="button" class="btn btn-primary" id="myhorse4" value="Horse 4" onclick="pickHorse(this)" />Horse 4</button>
+					 
 					</div>
-
 				</div>
 
 			<!--</div> end choose-winner -->
