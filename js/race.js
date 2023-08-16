@@ -109,10 +109,10 @@
 			//console.log('position: ' + pos);
 
 			if(pos > 0) {
-				document.getElementById(str_id).style.marginLeft = pos + "00px";
+				document.getElementById(str_id).style.paddingLeft = pos + "0%";
 
 				// when we have a winner change text to green
-				if((pos + "00px") == "1000px"){
+				if((pos + "0%") == "100%"){
 					document.getElementById(str_id).style.color = "green";
 					document.getElementById(str_id).style.fontWeight = "bold";
 					
