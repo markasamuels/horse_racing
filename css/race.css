@@ -4,9 +4,12 @@
 			.horse {
 				margin-bottom: 20px;
 			}
-			.horse img{
-				max-height: 50px;
-				max-width: 90px;
+			
+			.horse .foo{
+				width: 2rem;
+				height: 2rem;
+				background-color: #212529;
+				border-radius: 0.375rem;
 			}
 			
 
