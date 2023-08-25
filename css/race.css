@@ -26,7 +26,7 @@
 				border: 2px dotted red;
 				border-radius: 10px/15px;
 				height: 70px;
-				background: white;
+				background: #ffc107;
 			}
 			#winning-horse {
 				border: 2px dotted green;
@@ -48,3 +48,39 @@
 			.video-title {
 				color:#fff;
 			}
+			#bkg-track {
+			  width:100%;
+			  position:absolute;
+			  height:100px;
+			  z-index:2;
+			}
+			#bkg-track div{
+			  width:100px;
+			  height:100px;
+			  position:absolute;
+			  border:1px solid;
+			  opacity:0.5;
+			}
+			#track-holder {
+				z-index: 0;
+				position:absolute;
+			}
+			
+			.wrap {
+  overflow: hidden;
+}
+
+.sliding {
+  background: url("background-image: url('race_track_1.jpg')") repeat-x;
+99
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide{
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-1692px, 0, 0);
+  }
+}
