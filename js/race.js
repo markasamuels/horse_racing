@@ -138,7 +138,7 @@
 	/**
 	** Show the horse selection and start the game
 	**/
-	function pickHorse(chosen_horse) {
+	function pickHorse(chosen_horse, icon_id) {
 		//console.log('horse is: ' + chosen_horse);
 		// chose horse
 		var elem = document.getElementById('selected-horse');
@@ -149,6 +149,11 @@
 		var selected_btn = document.getElementById(chosen_horse.id);
 		selected_btn.classList.remove('btn-primary');
 		selected_btn.classList.add('btn-warning');
+
+		var foo = document.getElementById(icon_id);
+		foo.classList.remove('foo');
+		foo.classList.add('icon_selected');
+
 
 		// start game
 		startRace();
