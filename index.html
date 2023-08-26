@@ -56,10 +56,10 @@
 
 			<div id="racetrack" class="col-sm-9">
 
-				<div id="horse1" class="horse"><span class="foo">horse1</span></div>
-				<div id="horse2" class="horse"><span class="foo">horse2</span></div>
-				<div id="horse3" class="horse"><span class="foo">horse3</span></div>
-				<div id="horse4" class="horse"><span class="foo">horse4</span></div>
+				<div id="horse1" class="horse"><span id="h1" class="foo">horse1</span></div>
+				<div id="horse2" class="horse"><span id="h2" class="foo">horse2</span></div>
+				<div id="horse3" class="horse"><span id="h3" class="foo">horse3</span></div>
+				<div id="horse4" class="horse"><span id="h4" class="foo">horse4</span></div>
 
 
 			</div>
@@ -84,19 +84,19 @@
 				<div class="row">
 					<div class="col-sm-12">
 					
-						<button type="button" class="btn btn-primary" id="myhorse1" value="Horse 1" onclick="pickHorse(this)" />Horse 1</button>
+						<button type="button" class="btn btn-primary" id="myhorse1" value="Horse 1" onclick="pickHorse(this, 'h1')" />Horse 1</button>
 					
 
 					
-						<button type="button" class="btn btn-primary" id="myhorse2" value="Horse 2" onclick="pickHorse(this)" />Horse 2</button>
+						<button type="button" class="btn btn-primary" id="myhorse2" value="Horse 2" onclick="pickHorse(this, 'h2')" />Horse 2</button>
 					
 
 					
-						<button type="button" class="btn btn-primary" id="myhorse3" value="Horse 3" onclick="pickHorse(this)" />Horse 3</button>
+						<button type="button" class="btn btn-primary" id="myhorse3" value="Horse 3" onclick="pickHorse(this, 'h3')" />Horse 3</button>
 					
 
 					
-						<button type="button" class="btn btn-primary" id="myhorse4" value="Horse 4" onclick="pickHorse(this)" />Horse 4</button>
+						<button type="button" class="btn btn-primary" id="myhorse4" value="Horse 4" onclick="pickHorse(this, 'h4')" />Horse 4</button>
 					 
 					</div>
 				</div>
