@@ -37,7 +37,6 @@
 	};
 
 	const Horse = {
-		scores: "",// store scores as string then split to make array
 		points: 0,
 		name: "",
 		generateRandomNum: function() {
@@ -54,6 +53,7 @@
 				this.scores += this.points + ",";
 			} else {
 				this.scores += 0 + "," ;
+				this.points += 0;
 			}
 		},
 		getScores: function() {
@@ -156,5 +156,22 @@
 
 
 		// start game
+		//startRace();
+	}
+	
+	
+	function setAmt(selectObject) {
+		var value = selectObject.value;  
+		//alert(value);
+		document.getElementById('bet').innerHTML = value + " SAT";
+		
+		document.getElementById('bal').innerHTML = (10 - value) - 1 + " SAT";
+	}
+	
+	function start() {
+		
+		var btn = document.getElementById("play");
+		
+		btn.disabled = true;
 		startRace();
 	}
