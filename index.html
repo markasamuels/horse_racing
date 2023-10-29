@@ -78,7 +78,7 @@
 
 				<div class="row">
 					<div class="col-sm-12">
-						<label><h3  style="color:white">Pick Your Horse:</h3></label> <br />
+						<label><h4  style="color:white">Pick Your Horse:</h4></label> <br />
 					</div>
 				</div>
 
@@ -86,25 +86,78 @@
 
 	</div>
 
-				<div class="row">
-					<div class="col-sm-12">
-					
-						<button type="button" class="btn btn-primary" id="myhorse1" value="Horse 1" onclick="pickHorse(this, 'h1')" />Horse1</button>
-					
+	<!-- Start dash -->
+	<div class="row">
 
-					
-						<button type="button" class="btn btn-primary" id="myhorse2" value="Horse 2" onclick="pickHorse(this, 'h2')" />Horse2</button>
-					
+		<div class="col-sm-6">
 
-					
-						<button type="button" class="btn btn-primary" id="myhorse3" value="Horse 3" onclick="pickHorse(this, 'h3')" />Horse3</button>
-					
+			<div class="row">
 
-					
-						<button type="button" class="btn btn-primary" id="myhorse4" value="Horse 4" onclick="pickHorse(this, 'h4')" />Horse4</button>
-					 
+				<div class="col-sm-12">
+				
+					<button type="button" class="btn btn-primary" id="myhorse1" value="Horse 1" onclick="pickHorse(this, 'h1')" />Horse1</button>
+				
+
+				
+					<button type="button" class="btn btn-primary" id="myhorse2" value="Horse 2" onclick="pickHorse(this, 'h2')" />Horse2</button>
+				
+
+				
+					<button type="button" class="btn btn-primary" id="myhorse3" value="Horse 3" onclick="pickHorse(this, 'h3')" />Horse3</button>
+				
+
+				
+					<button type="button" class="btn btn-primary" id="myhorse4" value="Horse 4" onclick="pickHorse(this, 'h4')" />Horse4</button>
+				 
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<label><h4  style="color:white">Place Bet (SATS):</h4></label>
+				</div>
+				<div class="col-sm-6">
+					1 sat = 0.00000001 BTC
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3">
+					<select class="form-select" aria-label="Default select example" onchange="setAmt(this)">
+					  <option selected>SATS</option>
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					</select>
+				</div>
+			</div>
+
+			<br />
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="d-grid gap-2">
+						<button type="button" class="btn btn-success" id="play"  onclick="start()"/>Play</button>
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+
+			Balance: <span id="bal">10 SAT</span>
+			<hr />
+			Bet: <span id="bet"></span>
+			<hr />
+			Fee: 1 SAT
+			<hr />
+			
+		</div>
+	
+	</div>
+	<!-- End dash -->
+
 
 	<div class="row" style="background-color:black">
 
