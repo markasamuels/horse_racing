@@ -10,6 +10,7 @@
 		}
 		increase(incBal) {
 			var bal = this.getBalance() + incBal;
+			//alert('bal after inc called' + bal);
 			this.setBalance(bal);
 		}
 		decrease(decBal) {
@@ -161,7 +162,7 @@
 					} else {
 						//act.decrease(game1.player_bet);
 					}
-					
+					//alert(act.getBalance());
 					// update balance in view
 					document.getElementById('bal').innerHTML = act.getBalance() + " SAT";
 
@@ -194,15 +195,14 @@
 		var selected_btn = document.getElementById(chosen_horse.id);
 		selected_btn.classList.remove('btn-primary');
 		selected_btn.classList.add('btn-warning');
-//alert('chosen id: ' + chosen_horse.id)
+		
+		//alert('chosen id: ' + chosen_horse.id)
 		var foo = document.getElementById(icon_id);
 		foo.classList.remove('foo');
 		foo.classList.add('icon_selected');
 
 		game1.selected_horse_id = chosen_horse.id;
 
-		// start game
-		//startRace();
 	}
 	
 	
@@ -216,7 +216,7 @@
 		document.getElementById('bal').innerHTML = (10 - betValue) - 1 + " SAT";
 		
 		act.decrease(parseInt(betValue) + 1);
-		
+		//alert('balance after bet: ' + act.getBalance());
 		game1.player_bet = parseInt(betValue);
 	}
 	
