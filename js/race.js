@@ -10,12 +10,10 @@
 		}
 		increase(incBal) {
 			var bal = this.getBalance() + incBal;
-			//alert('bal after inc called' + bal);
 			this.setBalance(bal);
 		}
 		decrease(decBal) {
 			var bal = this.getBalance() - decBal;
-			//alert(bal);
 			this.setBalance(bal);
 		}		
 	}
@@ -149,16 +147,12 @@
 					
 					// compare the winning horse and selected
 					// if same then increase balance by bet
-							//alert('winner id: ' + str_id)
+
 					game1.winning_horse_id = str_id
-					// 		act.increase(bet)
-					// else decrease balance by bet
-					// 		act.decrease(bet)
 					
-					// @TODO NOte: do a string replace on my from myhorse to make this work
+					// @TODO NOte: do a substring myhorseX to make this work
 					var sh = game1.selected_horse_id.substring(2);
 					if (sh == game1.winning_horse_id) {
-						// @TODO also add winnings from other horses that lost
 						// FOR NOW JUST GIVE WINNER BACK THEIR BET * 2
 						act.increase(game1.player_bet * 2);
 					} else {
@@ -198,7 +192,6 @@
 		selected_btn.classList.remove('btn-primary');
 		selected_btn.classList.add('btn-warning');
 		
-		//alert('chosen id: ' + chosen_horse.id)
 		var foo = document.getElementById(icon_id);
 		foo.classList.remove('foo');
 		foo.classList.add('icon_selected');
@@ -218,7 +211,7 @@
 		document.getElementById('bal').innerHTML = (10 - betValue) - 1 + " SAT";
 		
 		act.decrease(parseInt(betValue) + 1);
-		//alert('balance after bet: ' + act.getBalance());
+
 		game1.player_bet = parseInt(betValue);
 	}
 	
