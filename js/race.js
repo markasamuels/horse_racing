@@ -155,14 +155,16 @@
 					// else decrease balance by bet
 					// 		act.decrease(bet)
 					
-					if (game1.selected_horse_id == game1.winning_horse_id) {
+					// @TODO NOte: do a string replace on my from myhorse to make this work
+					var sh = game1.selected_horse_id.substring(2);
+					if (sh == game1.winning_horse_id) {
 						// @TODO also add winnings from other horses that lost
 						// FOR NOW JUST GIVE WINNER BACK THEIR BET * 2
 						act.increase(game1.player_bet * 2);
 					} else {
 						//act.decrease(game1.player_bet);
 					}
-					//alert(act.getBalance());
+
 					// update balance in view
 					document.getElementById('bal').innerHTML = act.getBalance() + " SAT";
 
