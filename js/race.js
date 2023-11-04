@@ -17,15 +17,15 @@
 			this.setBalance(bal);
 		}		
 	}
-	const Game = {
-		horses: [],
-		horse_scores: [],
-		has_winner: false,
-		player_bet: null,
-		selected_horse_id: null,
-		winning_horse_id: null,
+	class Game {
+		horses = [];
+		horse_scores = [];
+		has_winner = false;
+		player_bet = null;
+		selected_horse_id = null;
+		winning_horse_id = null;
 		// TODO pass in an array of horses
-		startGame: function(){
+		startGame() {
 			let h1 = Object.create(Horse);
 			h1.name = "Horse 1";
 			let h2 = Object.create(Horse);
@@ -86,7 +86,7 @@
 
 
 
-	let game1 = Object.create(Game);
+	let game1 = new Game();
 	game1.startGame();
 	
 	let act = new Account(10);
