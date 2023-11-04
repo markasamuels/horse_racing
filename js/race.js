@@ -26,13 +26,13 @@
 		winning_horse_id = null;
 		// TODO pass in an array of horses
 		startGame() {
-			let h1 = Object.create(Horse);
+			let h1 = new Horse();
 			h1.name = "Horse 1";
-			let h2 = Object.create(Horse);
+			let h2 = new Horse();
 			h2.name = "Horse 2";
-			let h3 = Object.create(Horse);
+			let h3 = new Horse();
 			h3.name = "Horse 3";
-			let h4 = Object.create(Horse);
+			let h4 = new Horse();
 			h4.name = "Horse 4";
 
 			// store all the horses in an array for use later
@@ -58,13 +58,13 @@
 		}
 	};
 
-	const Horse = {
-		points: 0,
-		name: "",
-		generateRandomNum: function() {
+	class Horse {
+		points = 0;
+		name = "";
+		generateRandomNum() {
 			return Math.random();
-		},
-		setPosition: function(){
+		}
+		setPosition() {
 			let num = this.generateRandomNum();
 
 			// if above .5 horse gets 1 point
@@ -77,8 +77,8 @@
 				this.scores += 0 + "," ;
 				this.points += 0;
 			}
-		},
-		getScores: function() {
+		}
+		getScores() {
 			return this.scores.split(",");
 		}
 
