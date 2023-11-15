@@ -11,7 +11,13 @@
 				height: 2rem;
 				background-color: #fff;
 				border-radius: 0.375rem;
-			}			
+			}
+			.icon {
+				background-color: #fff;
+				width: 2rem;
+				height: 2rem;
+				border-radius: 0.375rem;
+			}				
 			.icon_selected {
 				background-color: #ffc107;
 				width: 2rem;
@@ -67,6 +73,9 @@
 			  border:1px solid;
 			  opacity:0.5;
 			}
+			.slide {
+				background: url("background-image: url('images/race_track_1.gif')") repeat-x;
+			}
 			#track-holder {
 				z-index: 0;
 				position:absolute;
@@ -75,18 +84,3 @@
 			.wrap {
 				overflow: hidden;
 			}
-
-			.sliding {
-			  background: url("background-image: url('race_track_1.jpg')") repeat-x;
-			99
-			  animation: slide 60s linear infinite;
-			}
-
-			@keyframes slide{
-			  0%{
-				transform: translate3d(0, 0, 0);
-			  }
-			  100%{
-				transform: translate3d(-1692px, 0, 0);
-			  }
-}
