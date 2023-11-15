@@ -181,7 +181,7 @@
 		document.getElementById('bet').innerHTML = betValue + " SAT";
 		
 		// decrease balance. update object
-		document.getElementById('bal').innerHTML = (10 - betValue) - 1 + " SAT";
+		document.getElementById('bal').innerHTML = (act.balance - betValue) - 1 + " SAT";
 		
 		act.decrease(parseInt(betValue) + 1);
 
@@ -203,10 +203,10 @@
 	let act = new Account(10);
 
 	// get the score
-	let horse1 = game1.horses[0].getScores();
-	let horse2 = game1.horses[1].getScores();
-	let horse3 = game1.horses[2].getScores();
-	let horse4 = game1.horses[3].getScores();
+	let horse1_scores = game1.horses[0].getScores();
+	let horse2_scores = game1.horses[1].getScores();
+	let horse3_scores = game1.horses[2].getScores();
+	let horse4_scores = game1.horses[3].getScores();
 
 	// interval of gallop
 	let gallopIntvalId;
@@ -218,10 +218,10 @@
 		let count = game1.getI();
 		//console.log('i is:' + count);
 
-		showMovement('horse1', horse1, count);
-		showMovement('horse2', horse2, count);
-		showMovement('horse3', horse3, count);
-		showMovement('horse4', horse4, count);
+		showMovement('horse1', horse1_scores, count);
+		showMovement('horse2', horse2_scores, count);
+		showMovement('horse3', horse3_scores, count);
+		showMovement('horse4', horse4_scores, count);
 	}
 
 
