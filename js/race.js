@@ -89,40 +89,6 @@
 	};
 
 
-
-	let game1 = new Game();
-	game1.startGame();
-	
-	let act = new Account(10);
-
-	// get the score
-	let horse1 = game1.horses[0].getScores();
-	let horse2 = game1.horses[1].getScores();
-	let horse3 = game1.horses[2].getScores();
-	let horse4 = game1.horses[3].getScores();
-
-	// interval of gallop
-	let gallopIntvalId;
-
-
-	function gallop(){
-
-		// the number movements made
-		let count = game1.getI();
-		console.log('i is:' + count);
-
-		showMovement('horse1', horse1, count);
-		showMovement('horse2', horse2, count);
-		showMovement('horse3', horse3, count);
-		showMovement('horse4', horse4, count);
-	}
-
-
-	function newGame() {
-		location.reload();
-	}
-
-
 	/**
 	** Show the horse icon moving on page
 	** str_id - id of the element holding icon
@@ -137,7 +103,7 @@
 		if(array_pos < horse_scores_array.length){
 
 			let pos = horse_scores_array[array_pos];
-			console.log('position: ' + pos);
+			//console.log('position: ' + pos);
 
 			if(pos > 0) {
 
@@ -181,15 +147,6 @@
 			clearInterval(gallopIntvalId);
 			gallopIntvalId = null;
 		}
-	}
-
-	/**
-	** Do the horse movement logic every 1 second
-	**/
-	function startRace(){
-
-		gallopIntvalId = setInterval(gallop, 1000);
-
 	}
 
 
@@ -237,4 +194,47 @@
 		
 		btn.disabled = true;
 		startRace();
+	}
+
+
+	let game1 = new Game();
+	game1.startGame();
+	
+	let act = new Account(10);
+
+	// get the score
+	let horse1 = game1.horses[0].getScores();
+	let horse2 = game1.horses[1].getScores();
+	let horse3 = game1.horses[2].getScores();
+	let horse4 = game1.horses[3].getScores();
+
+	// interval of gallop
+	let gallopIntvalId;
+
+
+	function gallop(){
+
+		// the number movements made
+		let count = game1.getI();
+		//console.log('i is:' + count);
+
+		showMovement('horse1', horse1, count);
+		showMovement('horse2', horse2, count);
+		showMovement('horse3', horse3, count);
+		showMovement('horse4', horse4, count);
+	}
+
+
+	/**
+	** Do the horse movement logic every 1 second
+	**/
+	function startRace(){
+
+		gallopIntvalId = setInterval(gallop, 1000);
+
+	}
+
+
+	function newGame() {
+		location.reload();
 	}
