@@ -19,7 +19,7 @@
 	}
 	class Game {
 		horses = [];
-		horse_scores = [];
+		horse_scores = []; // [5, 8, 10, 2] - cummulative points for each horse
 		has_winner = false;
 		player_bet = null;
 		selected_horse_id = null;
@@ -63,7 +63,7 @@
 	};
 
 	class Horse {
-		points = 0;
+		points = 0; // [0, 1, 0, 0, 1] - points received each movement until total 10
 		name = "";
 		generateRandomNum() {
 			return Math.random();
@@ -165,10 +165,17 @@
 		selected_btn.classList.remove('btn-primary');
 		selected_btn.classList.add('btn-warning');
 		
+		// horse selected Button
+		selected_btn_horse = selected_btn;
+		
 		var foo = document.getElementById(icon_id);
 		foo.classList.remove('foo');
 		foo.classList.add('icon_selected');
 
+
+		// horse on track
+		selected_track_horse = foo;
+		
 		game1.selected_horse_id = chosen_horse.id;
 
 	}
@@ -192,7 +199,7 @@
 		
 		var btn = document.getElementById("play");
 		
-		btn.disabled = true;
+		//btn.disabled = true;
 		startRace();
 	}
 
@@ -210,6 +217,10 @@
 
 	// interval of gallop
 	let gallopIntvalId;
+	
+	// @TODO for now set 2 global var for UI reset
+	let selected_track_horse;
+	let selected_btn_horse;
 
 
 	function gallop(){
@@ -235,6 +246,45 @@
 	}
 
 
-	function newGame() {
-		location.reload();
+	// reset UI
+	function restUi() {
+		
+		document.getElementById('horse1').style.paddingLeft = 0;
+		document.getElementById('horse2').style.paddingLeft = 0;
+		document.getElementById('horse3').style.paddingLeft = 0;
+		document.getElementById('horse4').style.paddingLeft = 0;
+
+		document.getElementById('winning-horse').innerHTML = '';
+		document.getElementById('selected-horse').innerHTML = '';
+		
+		// bet value reset		
+		document.getElementById("sat-amt").selectedIndex = 0;
+
+
+		// horse sprite on track
+		selected_track_horse.classList.remove('icon_selected');
+		selected_track_horse.classList.add('icon');
+		
+		//selected_track_horse.style.color = "black";
+		//selected_track_horse.style.fontWeight = "normal";
+		
+		// horse button
+		selected_btn_horse.classList.remove('btn-warning');
+		selected_btn_horse.classList.add('btn-primary');
+
+		// play Button
+		//document.getElementById("play").disabled = false;			
 	}
+
+	function newGame() {
+		//location.reload();
+		game1 = new Game();
+		
+		game1.startGame(); // - @TODO: maybe change name
+
+		// reset UI +  reset Objects
+		restUi();
+
+	}
+
+
