@@ -24,6 +24,7 @@
 		player_bet = null;
 		selected_horse_id = null;
 		winning_horse_id = null;
+		i = 0;
 		// TODO pass in an array of horses
 		startGame() {
 			let h1 = new Horse();
@@ -55,6 +56,9 @@
 				this.has_winner = this.horse_scores.includes(10);
 			}
 
+		}
+		getI() {
+			return this.i++;
 		}
 	};
 
@@ -91,22 +95,21 @@
 	
 	let act = new Account(10);
 
-	// loop through scores array
+	// get the score
 	let horse1 = game1.horses[0].getScores();
 	let horse2 = game1.horses[1].getScores();
 	let horse3 = game1.horses[2].getScores();
 	let horse4 = game1.horses[3].getScores();
 
-	let i=0;
+	// interval of gallop
+	let gallopIntvalId;
 
-
-	function getI() {
-		return i++;
-	}
 
 	function gallop(){
 
-		let count = getI();
+		// the number movements made
+		let count = game1.getI();
+		console.log('i is:' + count);
 
 		showMovement('horse1', horse1, count);
 		showMovement('horse2', horse2, count);
@@ -124,19 +127,27 @@
 	** Show the horse icon moving on page
 	** str_id - id of the element holding icon
 	** horse_scores_array - array containing scores each time random number generated for horse
+		ex: horse_scores[1, 0, 0, 1, 0]
 	** array_pos - the particular point in the array that holds the score
 	**/
 	function showMovement(str_id, horse_scores_array, array_pos){
+		
+		var hasWin = false;
+		//console.log('i is:' + count);
 		if(array_pos < horse_scores_array.length){
 
 			let pos = horse_scores_array[array_pos];
-			//console.log('position: ' + pos);
+			console.log('position: ' + pos);
 
 			if(pos > 0) {
+
 				document.getElementById(str_id).style.paddingLeft = pos + "0%";
 
 				// when we have a winner change text to green
 				if((pos + "0%") == "100%"){
+					
+					hasWin = true;
+					
 					document.getElementById(str_id).style.color = "green";
 					document.getElementById(str_id).style.fontWeight = "bold";
 					
@@ -165,6 +176,11 @@
 				}
 			}
 		}
+		
+		if (hasWin) {
+			clearInterval(gallopIntvalId);
+			gallopIntvalId = null;
+		}
 	}
 
 	/**
@@ -172,7 +188,7 @@
 	**/
 	function startRace(){
 
-		setInterval(gallop, 1000);
+		gallopIntvalId = setInterval(gallop, 1000);
 
 	}
 
