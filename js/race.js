@@ -146,6 +146,7 @@
 		if (hasWin) {
 			clearInterval(gallopIntvalId);
 			gallopIntvalId = null;
+
 		}
 	}
 
@@ -277,13 +278,13 @@
 	}
 
 	function newGame() {
-		//location.reload();
-		game1 = new Game();
+		location.reload();
+		//game1 = new Game();
 		
-		game1.startGame(); // - @TODO: maybe change name
+		//game1.startGame(); // - @TODO: maybe change name
 
 		// reset UI +  reset Objects
-		restUi();
+		//restUi();
 
 	}
 
