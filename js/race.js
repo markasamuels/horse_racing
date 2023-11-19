@@ -96,7 +96,7 @@
 		ex: horse_scores[1, 0, 0, 1, 0]
 	** array_pos - the particular point in the array that holds the score
 	**/
-	function showMovement(str_id, horse_scores_array, array_pos){
+	function showMovement(game, str_id, horse_scores_array, array_pos){
 		
 		var hasWin = false;
 		//console.log('i is:' + count);
@@ -125,13 +125,13 @@
 					// compare the winning horse and selected
 					// if same then increase balance by bet
 
-					game1.winning_horse_id = str_id
+					game.winning_horse_id = str_id
 					
 					// @TODO NOte: do a substring myhorseX to make this work
-					var sh = game1.selected_horse_id.substring(2);
-					if (sh == game1.winning_horse_id) {
+					var sh = game.selected_horse_id.substring(2);
+					if (sh == game.winning_horse_id) {
 						// FOR NOW JUST GIVE WINNER BACK THEIR BET * 2
-						act.increase(game1.player_bet * 2);
+						act.increase(game.player_bet * 2);
 					} else {
 						//act.decrease(game1.player_bet);
 					}
@@ -146,7 +146,6 @@
 		if (hasWin) {
 			clearInterval(gallopIntvalId);
 			gallopIntvalId = null;
-
 		}
 	}
 
@@ -176,8 +175,7 @@
 
 		// horse on track
 		selected_track_horse = foo;
-		
-		game1.selected_horse_id = chosen_horse.id;
+
 
 	}
 	
@@ -193,28 +191,63 @@
 		
 		act.decrease(parseInt(betValue) + 1);
 
-		game1.player_bet = parseInt(betValue);
 	}
 	
 	function start() {
 		
+		let game1 = new Game();
+		game1.startGame();
+	
 		var btn = document.getElementById("play");
 		
+
+		// check which horse was selected
+		var selected_btn_coll = document.getElementsByClassName("pick-btn");
+
+		for (let i = 0; i < selected_btn_coll.length; i++) {
+
+			// check if btn has class btn-warning
+			if (selected_btn_coll[i].classList.contains('btn-warning')) {
+
+				game1.selected_horse_id = selected_btn_coll[i].id;
+			}
+		
+		}
+		
+		// get the amount of the bet
+		var betAmt = document.getElementById("sat-amt").value;
+		
+		game1.player_bet = parseInt(betAmt);
+		
 		//btn.disabled = true;
-		startRace();
+		startRace(game1);
 	}
 
 
-	let game1 = new Game();
-	game1.startGame();
-	
-	let act = new Account(10);
+	/**
+	** Do the horse movement logic every 1 second
+	**/
+	function startRace(game){
 
-	// get the score
-	let horse1_scores = game1.horses[0].getScores();
-	let horse2_scores = game1.horses[1].getScores();
-	let horse3_scores = game1.horses[2].getScores();
-	let horse4_scores = game1.horses[3].getScores();
+		gallopIntvalId = setInterval(gallop, 1000, game);
+
+	}
+
+
+	function gallop(g){
+
+		// the number movements made
+		let count = g.getI();
+		//console.log('i is:' + count);
+
+		showMovement(g, 'horse1', g.horses[0].getScores(), count);
+		showMovement(g, 'horse2', g.horses[1].getScores(), count);
+		showMovement(g, 'horse3', g.horses[2].getScores(), count);
+		showMovement(g, 'horse4', g.horses[3].getScores(), count);
+	}
+
+
+	let act = new Account(10);
 
 	// interval of gallop
 	let gallopIntvalId;
@@ -222,29 +255,6 @@
 	// @TODO for now set 2 global var for UI reset
 	let selected_track_horse;
 	let selected_btn_horse;
-
-
-	function gallop(){
-
-		// the number movements made
-		let count = game1.getI();
-		//console.log('i is:' + count);
-
-		showMovement('horse1', horse1_scores, count);
-		showMovement('horse2', horse2_scores, count);
-		showMovement('horse3', horse3_scores, count);
-		showMovement('horse4', horse4_scores, count);
-	}
-
-
-	/**
-	** Do the horse movement logic every 1 second
-	**/
-	function startRace(){
-
-		gallopIntvalId = setInterval(gallop, 1000);
-
-	}
 
 
 	// reset UI
@@ -261,30 +271,30 @@
 		// bet value reset		
 		document.getElementById("sat-amt").selectedIndex = 0;
 
-
 		// horse sprite on track
 		selected_track_horse.classList.remove('icon_selected');
-		selected_track_horse.classList.add('icon');
+		selected_track_horse.classList.add('foo');
 		
-		//selected_track_horse.style.color = "black";
-		//selected_track_horse.style.fontWeight = "normal";
+		//selected_track_horse.style.color = "green";
+		//selected_track_horse.style.fontWeight = "bold";
 		
 		// horse button
-		selected_btn_horse.classList.remove('btn-warning');
-		selected_btn_horse.classList.add('btn-primary');
+		selected_btn_coll = document.getElementsByClassName("pick-btn");
+
+		for (let i = 0; i < selected_btn_coll.length; i++) {
+
+			selected_btn_coll[i].classList.remove('btn-warning');
+			selected_btn_coll[i].classList.add('btn-primary');
+		}
+
 
 		// play Button
 		//document.getElementById("play").disabled = false;			
 	}
 
 	function newGame() {
-		location.reload();
-		//game1 = new Game();
-		
-		//game1.startGame(); // - @TODO: maybe change name
 
-		// reset UI +  reset Objects
-		//restUi();
+		restUi();
 
 	}
 
