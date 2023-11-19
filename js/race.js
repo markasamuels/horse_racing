@@ -195,14 +195,14 @@
 	
 	function start() {
 		
-		let game1 = new Game();
-		game1.startGame();
-	
-		var btn = document.getElementById("play");
-		
-
 		// check which horse was selected
 		var selected_btn_coll = document.getElementsByClassName("pick-btn");
+
+		// get the amount of the bet
+		var betAmt = document.getElementById("sat-amt").value;
+	
+	
+		let game1 = new Game();
 
 		for (let i = 0; i < selected_btn_coll.length; i++) {
 
@@ -213,11 +213,15 @@
 			}
 		
 		}
-		
-		// get the amount of the bet
-		var betAmt = document.getElementById("sat-amt").value;
-		
+
+		if(game1.selected_horse_id == null || parseInt(betAmt) == 0) {
+			return;
+		}
+
+		//var btn = document.getElementById("play");
+
 		game1.player_bet = parseInt(betAmt);
+		game1.startGame();
 		
 		//btn.disabled = true;
 		startRace(game1);
