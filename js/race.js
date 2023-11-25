@@ -114,8 +114,8 @@
 					
 					hasWin = true;
 					
-					document.getElementById(str_id).style.color = "green";
-					document.getElementById(str_id).style.fontWeight = "bold";
+					//document.getElementById(str_id).style.color = "green";
+					//document.getElementById(str_id).style.fontWeight = "bold";
 					
 					var winner = document.getElementById('winning-horse');
 					winner.innerHTML = "Winner is: " + str_id;
