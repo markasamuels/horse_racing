@@ -154,7 +154,28 @@
 	** Show the horse selection and start the game
 	**/
 	function pickHorse(chosen_horse, icon_id) {
-		//console.log('horse is: ' + chosen_horse);
+		
+		// remove any existing selections
+		var selected_btn_coll = document.getElementsByClassName("pick-btn");
+
+		for (let i = 0; i < selected_btn_coll.length; i++) {
+
+			selected_btn_coll[i].classList.remove('btn-warning');
+			selected_btn_coll[i].classList.add('btn-primary');
+		
+		}
+		
+		
+		// remove any sprite selected
+		var sprite_selected_coll = document.getElementsByClassName("horse");
+
+		for (let i = 0; i < sprite_selected_coll.length; i++) {
+
+			sprite_selected_coll[i].firstChild.classList.remove('icon_selected');
+			sprite_selected_coll[i].firstChild.classList.add('foo');
+		
+		}
+		
 		// chose horse
 		var elem = document.getElementById('selected-horse');
 		elem.innerHTML = "You chose: " + chosen_horse.value;
@@ -278,9 +299,6 @@
 		// horse sprite on track
 		selected_track_horse.classList.remove('icon_selected');
 		selected_track_horse.classList.add('foo');
-		
-		//selected_track_horse.style.color = "green";
-		//selected_track_horse.style.fontWeight = "bold";
 		
 		// horse button
 		selected_btn_coll = document.getElementsByClassName("pick-btn");
