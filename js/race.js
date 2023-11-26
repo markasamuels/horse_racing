@@ -296,6 +296,9 @@
 		// bet value reset		
 		document.getElementById("sat-amt").selectedIndex = 0;
 
+		// bet value reset		
+		document.getElementById("bet").innerHTML = '';
+
 		// horse sprite on track
 		selected_track_horse.classList.remove('icon_selected');
 		selected_track_horse.classList.add('foo');
