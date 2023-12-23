@@ -209,8 +209,6 @@
 		
 		// decrease balance. update object
 		document.getElementById('bal').innerHTML = (act.balance - betValue) - 1 + " SAT";
-		
-		act.decrease(parseInt(betValue) + 1);
 
 	}
 	
@@ -238,6 +236,8 @@
 		if(game1.selected_horse_id == null || parseInt(betAmt) == 0) {
 			return;
 		}
+		
+		act.decrease(parseInt(betAmt) + 1);
 
 		//var btn = document.getElementById("play");
 
@@ -322,5 +322,3 @@
 		restUi();
 
 	}
-
-
