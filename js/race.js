@@ -89,6 +89,21 @@
 	};
 
 
+	var myGameArea = {
+	  canvas : document.createElement("canvas"),
+	  start : function() {
+		this.canvas.width = 480;
+		this.canvas.height = 270;
+		this.context = this.canvas.getContext("2d");
+		document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+		this.frameNo = 0;
+	  },
+	  clear : function() {
+		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	  }
+	}
+
+
 	/**
 	** Show the horse icon moving on page
 	** str_id - id of the element holding icon
@@ -243,7 +258,12 @@
 
 		game1.player_bet = parseInt(betAmt);
 		game1.startGame();
-		
+
+		// change the play button color
+		var playBtn = document.getElementById("play");
+		playBtn.classList.remove('btn-success');
+		playBtn.classList.add("btn-secondary");
+
 		//btn.disabled = true;
 		startRace(game1);
 	}
@@ -302,6 +322,10 @@
 		// horse sprite on track
 		selected_track_horse.classList.remove('icon_selected');
 		selected_track_horse.classList.add('foo');
+
+		var playBtn = document.getElementById("play");
+		playBtn.classList.remove('btn-secondary');
+		playBtn.classList.add("btn-success");
 		
 		// horse button
 		selected_btn_coll = document.getElementsByClassName("pick-btn");
