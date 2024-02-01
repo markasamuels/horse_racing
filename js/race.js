@@ -90,6 +90,7 @@
 
 
 	var myGameArea = {
+      games_played: 0,
 	  canvas : document.createElement("canvas"),
 	  start : function() {
 		this.canvas.width = 480;
@@ -292,7 +293,7 @@
 	}
 
 
-	let act = new Account(10);
+	let act = new Account(100);
 
 	// interval of gallop
 	let gallopIntvalId;
@@ -344,5 +345,8 @@
 	function newGame() {
 
 		restUi();
+		
+		// increment games_played count
+		// myGameArea.games_played += 1;
 
 	}
