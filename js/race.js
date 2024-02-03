@@ -89,8 +89,9 @@
 	};
 
 
-	var myGameArea = {
+	/*var myGameArea = {
       games_played: 0,
+	  wins: 0,
 	  canvas : document.createElement("canvas"),
 	  start : function() {
 		this.canvas.width = 480;
@@ -102,6 +103,11 @@
 	  clear : function() {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	  }
+	}*/
+
+	class myGameArea {
+      games_played = 0;
+	  wins = 0;		
 	}
 
 
@@ -148,9 +154,15 @@
 					if (sh == game.winning_horse_id) {
 						// FOR NOW JUST GIVE WINNER BACK THEIR BET * 2
 						act.increase(game.player_bet * 2);
+						
+						// update wins
+						myG.wins += 1;
+
 					} else {
 						//act.decrease(game1.player_bet);
 					}
+
+					document.getElementById('score').innerHTML = 'Wins: ' + myG.wins + ' Games: ' + myG.games_played;
 
 					// update balance in view
 					document.getElementById('bal').innerHTML = act.getBalance() + " SAT";
@@ -265,6 +277,8 @@
 		playBtn.classList.remove('btn-success');
 		playBtn.classList.add("btn-secondary");
 
+		myG.games_played += 1;
+
 		//btn.disabled = true;
 		startRace(game1);
 	}
@@ -293,8 +307,8 @@
 	}
 
 
-	let act = new Account(100);
-
+	let act = new Account(100);	
+	let myG = new myGameArea();
 	// interval of gallop
 	let gallopIntvalId;
 	
@@ -347,6 +361,7 @@
 		restUi();
 		
 		// increment games_played count
-		// myGameArea.games_played += 1;
+		// myGameArea.games_played += 1
+		
 
 	}
