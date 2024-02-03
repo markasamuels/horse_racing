@@ -25,7 +25,9 @@
 				height: 2rem;
 				border-radius: 0.375rem;
 			}
-
+			#score, #account-info {
+				color: #fff;
+			}
 			#selected-horse, #winning-horse {
 				margin-top: 20px;
 				font-weight: bold;
@@ -61,7 +63,7 @@
 			.video-title {
 				color:#fff;
 			}
-			#bkg-track {
+			/*#bkg-track {
 			  width:100%;
 			  position:absolute;
 			  height:100px;
@@ -73,7 +75,7 @@
 			  position:absolute;
 			  border:1px solid;
 			  opacity:0.5;
-			}
+			}*/
 			.slide {
 				background: url("background-image: url('images/race_track_1.gif')") repeat-x;
 			}
@@ -84,4 +86,15 @@
 			
 			.wrap {
 				overflow: hidden;
+			}
+			
+			/* Scrolling background */
+			#bg-track { 
+			  width: 250px;
+			  height: 250px;
+			  margin: auto;
+			  border: solid black 1px;
+			  background-image: url('../images/race_track_1.gif');
+			  /*background-repeat: no-repeat;*/
+			  background-position-x: 10%; 
 			}
